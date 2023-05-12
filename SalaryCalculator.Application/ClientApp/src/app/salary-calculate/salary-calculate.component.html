@@ -1,0 +1,65 @@
+<div>
+  <div [formGroup]="parentForm">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input matInput id="firstName" class="form-control" name="firstName" formControlName="firstName"
+            placeholder="First Name" maxlength="250">
+          <span *ngIf="parentForm.controls.firstName.errors?.required && parentForm.controls.firstName.touched" class="span-color">
+            First name is required.
+          </span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input matInput id="lastName" class="form-control" name="lastName" formControlName="lastName"
+            placeholder="Last Name" maxlength="250">
+          <span *ngIf="parentForm.controls.lastName.errors?.required && parentForm.controls.lastName.touched" class="span-color">
+            Last name is required.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          Annual Salary
+          <input matInput id="anualSalary" class="form-control" name="annualSalary" formControlName="annualSalary"
+            placeholder="Anual Salary" maxlength="250" type="number">
+          <span *ngIf="parentForm.controls.annualSalary.errors?.required && parentForm.controls.annualSalary.touched" class="span-color">
+            Annual salary is required.
+          </span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          Super Rate
+          <input matInput id="superRate" class="form-control" name="supperRate" formControlName="supperRate"
+            placeholder="Super Rate" maxlength="250" type="number">
+          <span *ngIf="parentForm.controls.supperRate.errors?.required && parentForm.controls.supperRate.touched" class="span-color">
+            Super rate is required.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      Pay Period
+      <div class="dropdown">
+        <select name="cars" id="cars" class="form-control" formControlName="payPeriod">
+          <option *ngFor="let c of monthsList" [value]="c.value">{{c.name}} </option>
+        </select>
+      </div>
+      <span *ngIf="parentForm.controls.payPeriod.errors?.required && parentForm.controls.firstName.touched" class="span-color">
+        Pay period is required.
+      </span>
+    </div>
+    <!-- <button value="Submit" (click)="save()" > Process </button> -->
+    <button value="Submit" type="button" (click)="save()"  class="btn btn-primary"> Process </button>
+
+    <div aria-live="polite">Salary slip information: {{ salarySlipInformation }}</div>
+
+  </div>
+</div>
