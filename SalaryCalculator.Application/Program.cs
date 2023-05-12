@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SalaryCalculator.Domain.Services;
 using SalaryCalculator.Infrastructure;
+using SalaryCalculator.Infrastructure.MigrationManager;
 using SalaryCalculator.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,5 +33,5 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html"); ;
-
+app.MigrateDatabase();
 app.Run();
